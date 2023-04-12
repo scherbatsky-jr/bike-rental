@@ -1,0 +1,46 @@
+.signup-page {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.signup-form {
+  align-items: center;
+  border-radius: 0.25rem;
+  box-shadow: 0px 0px 20px 0px gray;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 2rem;
+}
+
+.signup-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+
+  label {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+  }
+
+  input {
+    border-radius: 0.25rem;
+    font-size: large;
+    height: 2.25rem;
+    padding: 0.25rem 0.5rem;
+    width: 30rem;
+  }
+}
+
+.signup-button {
+  border-radius: 0.25rem;
+  background-color: #0275d8;
+  color: white ;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+}

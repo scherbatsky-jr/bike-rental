@@ -1,0 +1,60 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-section-1 {
+  background-color: #f5f000;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+
+  &__header {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10rem;
+
+    p {
+      font-size: 1.25rem;
+      width: 30rem;
+    }
+  }
+
+  img {
+    border-radius: 2rem;
+    height: 30rem;
+  }
+}
+
+.home-section-2 {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 1rem;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      height: 20rem;
+    }
+
+    p {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.image-carousel {
+  align-self: center;
+  height: 25rem;
+  width: 50%;
+
+  img {
+    border-radius: 0.5rem;
+    height: 25rem;
+  }
+}
