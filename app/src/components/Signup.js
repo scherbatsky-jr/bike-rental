@@ -6,44 +6,46 @@ import ValidatonError from './ValidationError';
 import "../assets/css/components/signup.scss"
 
 function Signup() {
+  const navigate = useNavigate()
+
   const [errorMessage, setErrorMessage] = useState("")
-    const navigate = useNavigate()
 
-    async function handleRegister(e) {
-        e.preventDefault()
+  // send api request for signup
+  async function handleRegister(e) {
+      e.preventDefault()
 
-        const form = e.target
-        const user = {
-            full_name: form[0].value,
-            email: form[1].value,
-            password: form[2].value,
-        }
+      const form = e.target
+      const user = {
+          full_name: form[0].value,
+          email: form[1].value,
+          password: form[2].value,
+      }
 
-        try {
-            const res = await fetch(process.env.REACT_APP_API_URL + "/register", {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json"
-                },
-                body: JSON.stringify(user)
-            })
-            const data = await res.json()
-            setErrorMessage(data.message)
-        } catch (err) {
-            setErrorMessage(err)
-        }
-    }
+      try {
+          const res = await fetch(process.env.REACT_APP_API_URL + "/register", {
+              method: "POST",
+              headers: {
+                  "Content-type": "application/json"
+              },
+              body: JSON.stringify(user)
+          })
+          const data = await res.json()
+          setErrorMessage(data.message)
+      } catch (err) {
+          setErrorMessage(err)
+      }
+  }
 
-    useLayoutEffect(() => {
-        fetch(process.env.REACT_APP_API_URL + "/isUserAuth", {
-            headers: {
-                "x-access-token": localStorage.getItem("token")
-            }
-        })
-        .then(res => res.json())
-        .then(data => data.isLoggedIn ? navigate.push("/"): null)
-        .catch(err => setErrorMessage(err)) 
-    }, [navigate])
+  useLayoutEffect(() => {
+      fetch(process.env.REACT_APP_API_URL + "/isUserAuth", {
+          headers: {
+              "x-access-token": localStorage.getItem("token")
+          }
+      })
+      .then(res => res.json())
+      .then(data => data.isLoggedIn ? navigate.push("/"): null)
+      .catch(err => setErrorMessage(err)) 
+  }, [navigate])
 
   return (
     <div className='signup-page'>

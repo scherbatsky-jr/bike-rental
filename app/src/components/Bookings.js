@@ -9,6 +9,7 @@ function Bookings() {
   const [bikes, setBikes] = useState([]);
   const [bookings, setBookings] = useState([]);
 
+  // fetch bikes and bookings from api for user
   useLayoutEffect(() => {
     fetch(process.env.REACT_APP_API_URL + "/bikes", {
       method: "GET",
@@ -30,6 +31,7 @@ function Bookings() {
     })
   }, [])
 
+  // methods to get booking and bike info from fetched data
   const getBikeName = (booking) => {
     const bike = bikes.find(bike => bike._id === booking.bike)
 

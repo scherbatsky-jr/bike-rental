@@ -1,24 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
 
 import "../assets/css/components/home.scss";
 
 function Bikes() {
-  const [bikes, setBikes] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get('http://localhost:5000/bikes')
-      .then((response) => {
-        setBikes(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   return (
     <div className="home-page">
       <div className='home-section-1'>

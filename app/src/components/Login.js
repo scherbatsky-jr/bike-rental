@@ -15,41 +15,43 @@ function Login() {
   }
 
   const [errorMessage, setErrorMessage] = useState("")
-    async function handleLogin(e) {
-      e.preventDefault()
+  
+  // send login request to api
+  async function handleLogin(e) {
+    e.preventDefault()
 
-      const form = e.target;
-      const user = {
-          email: form[0].value,
-          password: form[1].value
-      }
-
-      try {
-          const res = await fetch(process.env.REACT_APP_API_URL + "/login", {
-              method: "POST",
-              headers: {
-                  "Content-type": "application/json"
-              },
-              body: JSON.stringify(user)
-          })
-          const data = await res.json()
-          localStorage.setItem("token", data.token)
-          setErrorMessage(data.message)
-      } catch(err) {
-          setErrorMessage(err)
-      }
+    const form = e.target;
+    const user = {
+        email: form[0].value,
+        password: form[1].value
     }
 
-    useLayoutEffect(() => {
-      fetch(process.env.REACT_APP_API_URL + "/isUserAuth", {
-          headers: {
-              "x-access-token": localStorage.getItem("token")
-          }
-      })
-      .then(res => res.json())
-      .then(data => data.isLoggedIn ? navigate.push("/bookings"): null)
-      .catch(err => setErrorMessage(err)) 
-    }, [navigate])
+    try {
+        const res = await fetch(process.env.REACT_APP_API_URL + "/login", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+        const data = await res.json()
+        localStorage.setItem("token", data.token)
+        setErrorMessage(data.message)
+    } catch(err) {
+        setErrorMessage(err)
+    }
+  }
+
+  useLayoutEffect(() => {
+    fetch(process.env.REACT_APP_API_URL + "/isUserAuth", {
+        headers: {
+            "x-access-token": localStorage.getItem("token")
+        }
+    })
+    .then(res => res.json())
+    .then(data => data.isLoggedIn ? navigate.push("/bookings"): null)
+    .catch(err => setErrorMessage(err)) 
+  }, [navigate])
 
   return (
     <>

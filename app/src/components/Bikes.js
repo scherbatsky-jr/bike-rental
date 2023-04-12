@@ -8,6 +8,7 @@ function Bikes() {
 
   const [bikes, setBikes] = useState([]);
 
+  // fetch all the bikes from api
   useEffect(() => {
     fetch(process.env.REACT_APP_API_URL + "/bikes", {
       method: "GET",

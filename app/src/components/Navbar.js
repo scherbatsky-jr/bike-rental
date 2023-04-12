@@ -18,6 +18,7 @@ function Navbar() {
     navigate("/" + page)
   }
 
+  // navbar menu options are based on if user is logged in or not
   return (
     <>
       <div className="navbar">

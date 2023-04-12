@@ -12,6 +12,7 @@ function Bike() {
 
   const token = localStorage.getItem("token")
 
+  // send user to login page if he has logged into app
   if (!token) {
     navigate("/login")
   }
@@ -25,6 +26,7 @@ function Bike() {
 
   const { bikeId } = useParams();
 
+  // fetch bike from api using bike id
   useEffect(() => {
     fetch(process.env.REACT_APP_API_URL + "/bike/" + bikeId, {
       method: "GET",
@@ -39,7 +41,8 @@ function Bike() {
     return "/images/bikes/" + bike.image;
   }
 
-  const handleLogin = async (e) => {
+  // send api request to create a booking
+  const handleBooking = async (e) => {
     e.preventDefault()
 
     try {
@@ -72,7 +75,7 @@ function Bike() {
         <div>{bike.type}</div>
         <div>Location: Kathmandu, Nepal</div>
         <div>{`Rs ${bike.pricePerHour}/hour`}</div>
-        <form onSubmit={(e) => handleLogin(e)}>
+        <form onSubmit={(e) => handleBooking(e)}>
           <div className='bike-field'>
             <label>Choose a date:</label>
             <DatePicker className='date-picker' selected={date} onChange={(date) => setDate(date)} />
