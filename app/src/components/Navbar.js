@@ -32,7 +32,7 @@ function Navbar() {
                 <a className='navbar-link' onClick={() => goTo('bookings')}>My Bookings</a>
               : <></>
             }
-            <a className='navbar-link' onClick={() => goTo('contactus')}>Contact</a>
+            <a className='navbar-link' onClick={() => goTo('contactus')}>Contact Us</a>
           </div>
           </div>
         <div div className='navbar-links'>
