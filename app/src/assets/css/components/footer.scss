@@ -1,0 +1,22 @@
+.footer {
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+
+  &__app {
+    font-weight: 600;
+  }
+
+  &__links {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1rem;
+    justify-content: center;
+
+    a {
+      color: black;
+      font-size: 1.25rem
+    }
+  }
+}
