@@ -38,6 +38,7 @@ function Login() {
 
         if (data.token) {
           localStorage.setItem("token", data.token)
+          setErrorMessage(data.message)
         } else {
           setErrorMessage(data.message)
         }
