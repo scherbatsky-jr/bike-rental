@@ -35,8 +35,12 @@ function Login() {
             body: JSON.stringify(user)
         })
         const data = await res.json()
-        localStorage.setItem("token", data.token)
-        setErrorMessage(data.message)
+
+        if (data.token) {
+          localStorage.setItem("token", data.token)
+        } else {
+          setErrorMessage(data.message)
+        }
     } catch(err) {
         setErrorMessage(err)
     }

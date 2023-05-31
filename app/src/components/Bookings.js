@@ -96,24 +96,26 @@ function Bookings() {
       <h1>My Bookings</h1>
       <div className='bookings-list'>
       {
-        bookings.map((booking, index) => {
-          return <div className='booking' key={'booking-' + index}>
-            <img src={getBikeImagePath(booking)} />
-            <div>
-              <h3>{getBikeName(booking)}</h3>
-              <h4>{getBikeType(booking)}</h4>
-              <div>{`Rs ${getBikeRate(booking)}/hour`}</div>
-              <button className="cancel-button" onClick={cancelBooking}>
-                Cancel Your Booking
-              </button>
+        bookings.length ?
+          bookings.map((booking, index) => {
+            return <div className='booking' key={'booking-' + index}>
+              <img src={getBikeImagePath(booking)} />
+              <div>
+                <h3>{getBikeName(booking)}</h3>
+                <h4>{getBikeType(booking)}</h4>
+                <div>{`Rs ${getBikeRate(booking)}/hour`}</div>
+                <button className="cancel-button" onClick={cancelBooking}>
+                  Cancel Your Booking
+                </button>
+              </div>
+              <div>
+                <h3>{`Date of booking: ${getBookingDate(booking)}`}</h3>
+                <h3>{`Number of hours: ${booking.hours}`}</h3>
+                <h3>{`Total Cost: Rs ${getTotalCost(booking)}`}</h3>
+              </div>
             </div>
-            <div>
-              <h3>{`Date of booking: ${getBookingDate(booking)}`}</h3>
-              <h3>{`Number of hours: ${booking.hours}`}</h3>
-              <h3>{`Total Cost: Rs ${getTotalCost(booking)}`}</h3>
-            </div>
-          </div>
-        })
+          }) :
+          <p>No bookings found</p>
       }
       </div>
     </div>
